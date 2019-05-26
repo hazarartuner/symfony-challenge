@@ -42,6 +42,10 @@ class People
      */
     private $age;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Toy", mappedBy="people")
+     */
+    private $toys;
 
     /**
      * Get id
@@ -123,6 +127,22 @@ class People
     public function getAge()
     {
         return $this->age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToys()
+    {
+        return $this->toys;
+    }
+
+    /**
+     * @param mixed $toys
+     */
+    public function setToys($toys)
+    {
+        $this->toys = $toys;
     }
 }
 

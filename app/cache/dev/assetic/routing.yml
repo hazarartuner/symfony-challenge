@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: /Users/vngrs/Workspace/Web/cobbleweb_symfony/app/config/routing_dev.yml

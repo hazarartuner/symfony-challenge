@@ -1,18 +1,53 @@
-<h1> People List </h1>
-<table class="">
-    <thead>
+{% extends 'base.html.twig' %}
 
+{% block body %}
+
+{% for flash_message in app.session.flashBag.get('success') %}
+    <div class="flash-success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
+<h1> People List </h1>
+<table border="1" border-collapse cellspacing="0">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>age</th>
+            <th>toy name</th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-
+        {% for person in people %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.age }}</td>
+                <td>{% if person.toys is defined %}
+                    {% for toy in person.toys %}
+                        {{ toy.name }}
+                    {% endfor %}
+                {% endif %}
+                </td>
+                <td><a href="{{ path('show-people', { 'id': person.id }) }}">Show</a></td>
+            </tr>
+        {% endfor %}
     </tbody>
 </table>
 
 <style>
-    table {
+    .flash-success {
+        background: #00C900;
+        border-radius: 4px;
+    }
 
+    table {
+        border-collapse: collapse;
     }
     table, th, td {
-
+        padding: 5px;
     }
 </style>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1> Person {{ person.id }}</h1>
+<ul>
+    <li><b>Name:</b> {{ person.name }}</li>
+    <li><b>Email:</b> {{ person.email }}</li>
+    <li><b>Age:</b> {{ person.age }}</li>
+    {% if person.toys is defined %}
+        {% for toy in person.toys %}
+            <li><b>Toy Name:</b> {{ toy.name }}</li>
+            <li><b>Creation Date:</b> {{ toy.creationDate|date }}</li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    table, th, td {
+        padding: 5px;
+    }
+</style>
+{% endblock %}

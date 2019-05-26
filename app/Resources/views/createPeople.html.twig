@@ -1,1 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for flash_message in app.session.flashBag.get('error') %}
+    <div class="flash-error">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 <h1> People Creation </h1>
+
+{{ form(peopleForm) }}
+
+<style>
+    .flash-error {
+        background: red;
+        border-radius: 4px;
+        color: #fff;
+    }
+
+    #form {
+        width: 360px;
+    }
+
+    label {
+        width: 60px;
+        height: 40px;
+    }
+
+    input[type="text"] {
+        width: 300px;
+        height: 40px;
+        background: #f0f0f0;
+        border: solid 1px #bbb;
+    }
+
+    button {
+        float: right;
+        width: 80px;
+        height: 40px;
+    }
+</style>
+{% endblock %}
